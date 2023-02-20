@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::create('tokens', function (Blueprint $table) {
             $table->string('api_token', 60)->nullable();
             $table->timestamp('api_token_expiration')->nullable();
         });
@@ -26,7 +26,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('tokens', function (Blueprint $table) {
             $table->dropColumn('api_token');
             $table->dropColumn('api_token_expiration');
         });
